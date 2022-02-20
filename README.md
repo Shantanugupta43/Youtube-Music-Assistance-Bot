@@ -5,6 +5,8 @@ The program is best suitable for playing music videos, Since this bot runs with 
 
 Instruction to start the bot are given in code comments of voicerecognise.py file
 
+The bot has limited capabilities as of now and runs best with good internet connection.
+
 The following program runs in Python command line
 
 Enjoy! 
