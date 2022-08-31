@@ -11,3 +11,9 @@ The following program runs in Python command line
 
 Enjoy! 
 
+
+
+
+
+https://user-images.githubusercontent.com/99300527/187607300-2eb61d2e-a513-46b0-acf0-60d95adb4ac9.mp4
+
