@@ -58,7 +58,7 @@ def mic():
         ytsearch.send_keys(txt_recognised)                    # type's the text recognised by the user 
         time.sleep(3)                                         # task is on hold for certain time (seconds)
         ytsearch.send_keys(Keys.RETURN)                       # Clicks on "enter" such that results are further shown
-        time.sleep(9)                                         # task is on hold for certain time (seconds)
+        time.sleep(5)                                         # task is on hold for certain time (seconds)
 
         # Xpath for any time frame text shown after performing a youtube search for the first video
         t = driver.find_element(By.XPATH,'/html/body/ytd-app/div[1]/ytd-page-manager/ytd-search/div[1]/ytd-two-column-search-results-renderer/div[2]/div/ytd-section-list-renderer/div[2]/ytd-item-section-renderer/div[3]/ytd-video-renderer[1]/div[1]/ytd-thumbnail/a/div[1]/ytd-thumbnail-overlay-time-status-renderer/span').text
