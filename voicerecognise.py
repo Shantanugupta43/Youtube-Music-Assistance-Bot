@@ -9,6 +9,7 @@ import speech_recognition as s      # Library required to understand the voice c
 from voicespeaker import cancelbot  # from voicespeaker.py file importing cancelbot() function
 from voicespeaker import *           # importing everything from voicespeaker.py file
 from selenium import webdriver       # Importing webdriver from selenium library
+from selenium.webdriver.common.by import By
 
 from selenium.webdriver.common.keys import Keys    # Importing Keys from selenium.webdriver.common.keys library  
 import time  # importing time
@@ -50,24 +51,25 @@ def mic():
         driver = webdriver.Chrome(driver_path)               # uses library and uses driver from the path
         driver.get("https://www.youtube.com/")               # opens Youtube
         time.sleep(3)                                        # task is on hold for certain time (seconds)
-        driver.find_element_by_link_text("ACCEPT ALL").click()  # Searches "I AGREE" on the cookie page and clicks it
+        driver.find_element(By.XPATH, '//*[@id="content"]/div[2]/div[6]/div[1]/ytd-button-renderer[2]/yt-button-shape/button').click()  # Searches "I AGREE" on the cookie page and clicks it
         time.sleep(1)                                        #task is on hold for certain time (seconds)
-        ytsearch= driver.find_element_by_name("search_query")  # Locates search bar on Youtube
+        ytsearch= driver.find_element(By.NAME,'search_query')  # Locates search bar on Youtube
         time.sleep(3)                                         #task is on hold for certain time (seconds)
         ytsearch.send_keys(txt_recognised)                    # type's the text recognised by the user 
         time.sleep(3)                                         # task is on hold for certain time (seconds)
         ytsearch.send_keys(Keys.RETURN)                       # Clicks on "enter" such that results are further shown
-        time.sleep(5)                                         # task is on hold for certain time (seconds)
+        time.sleep(9)                                         # task is on hold for certain time (seconds)
 
         # Xpath for any time frame text shown after performing a youtube search for the first video
-        t = driver.find_element_by_xpath("//body/ytd-app/div[@id='content']/ytd-page-manager[@id='page-manager']/ytd-search[@role='main']/div[@id='container']/ytd-two-column-search-results-renderer[@class='style-scope ytd-search']/div[@id='primary']/ytd-section-list-renderer[@class='style-scope ytd-two-column-search-results-renderer']/div[@id='contents']/ytd-item-section-renderer[@class='style-scope ytd-section-list-renderer']/div[@id='contents']/ytd-video-renderer[1]/div[1]/ytd-thumbnail[1]/a[1]/div[1]/ytd-thumbnail-overlay-time-status-renderer[1]/span[1]").text
+        t = driver.find_element(By.XPATH,'/html/body/ytd-app/div[1]/ytd-page-manager/ytd-search/div[1]/ytd-two-column-search-results-renderer/div[2]/div/ytd-section-list-renderer/div[2]/ytd-item-section-renderer/div[3]/ytd-video-renderer[1]/div[1]/ytd-thumbnail/a/div[1]/ytd-thumbnail-overlay-time-status-renderer/span').text
+        
         val = sec_convert(t) # takes the time frame in the form of minutes and seconds and converts it to seconds
         strtoint = int(val)  # takes the text (which has been converted to seconds) converts it from String to Integer
         
         
         time.sleep(5)
         # Xpath for the frame after performing a youtube search for the first video and performs click action
-        driver.find_element_by_xpath("/html/body/ytd-app/div/ytd-page-manager/ytd-search/div[1]/ytd-two-column-search-results-renderer/div/ytd-section-list-renderer/div[2]/ytd-item-section-renderer/div[3]/ytd-video-renderer[1]/div[1]").click()
+        driver.find_element(By.XPATH,'/html/body/ytd-app/div[1]/ytd-page-manager/ytd-search/div[1]/ytd-two-column-search-results-renderer/div[2]/div/ytd-section-list-renderer/div[2]/ytd-item-section-renderer/div[3]/ytd-video-renderer[1]/div[1]/ytd-thumbnail/a').click()
         
         time.sleep(6)
         driver.refresh()  # Refreshes the browser for the 1st time
