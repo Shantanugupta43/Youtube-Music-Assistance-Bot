@@ -37,10 +37,10 @@ def mic():
         #CHANGING THE SPEAKING RATE
         rate = engine.getProperty('rate')   # collecting info of current speaking rate
         print(rate)                         # printing it
-        engine.setProperty('rate',160)      # changing it
+        engine.setProperty('rate',175)      # changing it
         # CHANGING VOICE 
         voices = engine.getProperty('voices')       # collecting info of the current voice
-        engine.setProperty('voice', voices[1].id)  # changing index, changes voices. 1 for female
+        engine.setProperty('voice', voices[0].id)  # changing index, changes voices. 1 for female
         engine.say(txt_recognised)                 # takes the recognised text given by the user
         engine.say("playing for you now ... have fun listening!")      # says the message
         engine.runAndWait()
@@ -58,10 +58,10 @@ def mic():
         ytsearch.send_keys(txt_recognised)                    # type's the text recognised by the user 
         time.sleep(3)                                         # task is on hold for certain time (seconds)
         ytsearch.send_keys(Keys.RETURN)                       # Clicks on "enter" such that results are further shown
-        time.sleep(5)                                         # task is on hold for certain time (seconds)
+        time.sleep(7)                                         # task is on hold for certain time (seconds)
 
         # Xpath for any time frame text shown after performing a youtube search for the first video
-        t = driver.find_element(By.XPATH,'/html/body/ytd-app/div[1]/ytd-page-manager/ytd-search/div[1]/ytd-two-column-search-results-renderer/div[2]/div/ytd-section-list-renderer/div[2]/ytd-item-section-renderer/div[3]/ytd-video-renderer[1]/div[1]/ytd-thumbnail/a/div[1]/ytd-thumbnail-overlay-time-status-renderer/span').text
+        t = driver.find_element(By.XPATH,'/html/body/ytd-app/div[1]/ytd-page-manager/ytd-search/div[1]/ytd-two-column-search-results-renderer/div/ytd-section-list-renderer/div[2]/ytd-item-section-renderer/div[3]/ytd-video-renderer[1]/div[1]/ytd-thumbnail/a/div[1]/ytd-thumbnail-overlay-time-status-renderer/span').text
         
         val = sec_convert(t) # takes the time frame in the form of minutes and seconds and converts it to seconds
         strtoint = int(val)  # takes the text (which has been converted to seconds) converts it from String to Integer
@@ -69,7 +69,7 @@ def mic():
         
         time.sleep(5)
         # Xpath for the frame after performing a youtube search for the first video and performs click action
-        driver.find_element(By.XPATH,'/html/body/ytd-app/div[1]/ytd-page-manager/ytd-search/div[1]/ytd-two-column-search-results-renderer/div[2]/div/ytd-section-list-renderer/div[2]/ytd-item-section-renderer/div[3]/ytd-video-renderer[1]/div[1]/ytd-thumbnail/a').click()
+        driver.find_element(By.XPATH,'/html/body/ytd-app/div[1]/ytd-page-manager/ytd-search/div[1]/ytd-two-column-search-results-renderer/div/ytd-section-list-renderer/div[2]/ytd-item-section-renderer/div[3]/ytd-video-renderer[1]/div[1]/ytd-thumbnail/a/yt-image/img').click()
         
         time.sleep(6)
         driver.refresh()  # Refreshes the browser for the 1st time
